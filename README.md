@@ -67,7 +67,7 @@ Liquid + CSS + JavaScript でシンプルに実装しています。
 ## 🧑‍💻 作者
 
 **Ryohma U.**  
-ポートフォリオ：[https://rnsystem.jp](https://rnsystem.jp)
+ポートフォリオ：[https://www.rnsystem.jp](https://www.rnsystem.jp)
 
 ---
 
