@@ -34,7 +34,17 @@ Liquid + CSS + JavaScript でシンプルに実装しています。
 
 | PCビュー |
 |-----------|
-| ![PC Preview](images/sample_pc.jpg) |
+PCの完成プレビューサンプルです。
+| ![PC Preview01](images/sample_pc.jpg) |
+画像内のドットをマウスオーバーしたら詳細ラベルがポップアップします。
+| ![PC Preview02](images/sample_pc02.jpg) |
+
+| スマホビュー |
+|-----------|
+スマホの完成プレビューサンプルです。
+| ![スマホ Preview01](images/sample_sm01.jpg) |
+| ![スマホ Preview02](images/sample_sm02.jpg) |
+| ![スマホ Preview03](images/sample_pc03.jpg) |
 
 ---
 
