@@ -1,0 +1,234 @@
+<!-- { section.settings.name }} -->
+<!-- Start Contents Pallet uwasa 20241206 -->
+{{ 'contentspallet01_frame.css' | asset_url | stylesheet_tag }}
+{{ 'contentspallet01_pub.css' | asset_url | stylesheet_tag }}
+{{ 'contentspallet01_pip.css' | asset_url | stylesheet_tag }}
+<!-- End Contents Pallet uwasa 20241206 -->
+
+
+{% comment %}handleの値存在確認{% endcomment %}
+{% if section.settings.handle %}
+  {% comment %}contentspallet 親を取得{% endcomment %}
+  {% assign handle = section.settings.handle %}
+  {% assign metaobject_parent = shop.metaobjects.contents_pallet_parent[handle] %}
+  {% if metaobject_parent %}
+    {% comment %}start 親が存在するとき{% endcomment %}
+    <div class="contentspallet_pub__teaser__content">
+    <div id="wrapper-ec352610-95da-11ef-bce4-49d8ad70d281" class="c1ak7n4y s1qovwxw ijg39e8">
+    <div class="c1kvia2r">
+    {% if metaobject_parent.contents_pallet_child_list %}
+      {% comment %}start 親に子リストが存在するとき{% endcomment %}
+      {% for metaobject_child in metaobject_parent.contents_pallet_child_list.value %}
+        {% if metaobject_child %}
+          {% comment %}start 子が存在するとき{% endcomment %}
+          {% if forloop.index == 2 %}
+            {% comment %}start ２回目の子のとき{% endcomment %}
+            <div class="c1s88gxp a1wqrctr">
+            <div class="b35fnfp lbmzigv" style="background-color:{{ section.settings.color-bk }}">
+             <a href="{{ section.settings.url }}" class="b35fnfp lbmzigv" style="background-color:{{ section.settings.color-bk }}">
+              <h2 class="smia3rb l1874dwh s6h0sc" style="font-size:{{ section.settings.font-size }}px;color:{{ section.settings.font-color }}">{{ section.settings.title }}</h2>
+              <div class="b4hx509">
+                <button class="contentspallet_pub__btn contentspallet_pub__btn--small contentspallet_pub__btn--icon-primary-inverse" type="button" aria-hidden="true" tabindex="-1">
+                  <span class="contentspallet_pub__btn__inner">
+                    <svg focusable="false" viewBox="0 0 24 24" width="24" height="24" class="contentspallet_pub__svg-icon contentspallet_pub__btn__icon" aria-hidden="true">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="m20.0008 12.0001-8-8.001-1.4143 1.414L16.1727 11H4v2h12.1723l-5.5868 5.5866 1.4141 1.4142 8.0012-8.0007z"></path>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+              </a>
+            </div>
+            </div>
+            {% comment %}end ２回目の子のとき{% endcomment %}
+          {% endif %}
+          {% comment %}start 画像子のとき{% endcomment %}
+          <div class="c1s88gxp a1wqrctr">
+          <div class="contentspallet_pub__shoppable-image contentspallet_pub__shoppable-image--visible-dots">
+          {% comment %}start 画像が存在するとき{% endcomment %}
+          {% if metaobject_child.content_image.value %}
+            {% comment %}<a class="contentspallet_pub__shoppable-image__category-link" href="{{ metaobject_child.content_image_url }}">{% endcomment %}
+            {% assign is_even = forloop.index | modulo: 2 %}
+            {% if forloop.first %}
+              <span class="contentspallet_pub__aspect-ratio-box contentspallet_pub__aspect-ratio-box--portrait-to-square-from-md-to-portrait-from-lg">
+              <img class="contentspallet_pub__image" alt="{{ metaobject_child.content_image_alt }}" src="{{ metaobject_child.content_image | file_url }}" srcset="" sizes="" loading="lazy">
+              </span>
+            {% elsif forloop.last %}
+              <span class="contentspallet_pub__aspect-ratio-box contentspallet_pub__aspect-ratio-box--square">
+              <img class="contentspallet_pub__image" alt="{{ metaobject_child.content_image_alt }}" src="{{ metaobject_child.content_image | file_url }}" srcset="" sizes="" loading="lazy">
+              </span>
+            {% else %}
+              <span class="contentspallet_pub__aspect-ratio-box contentspallet_pub__aspect-ratio-box--portrait">
+              <img class="contentspallet_pub__image" alt="{{ metaobject_child.content_image_alt }}" src="{{ metaobject_child.content_image | file_url }}" srcset="" sizes="" loading="lazy">
+              </span>
+            {% endif %}
+            {% comment %}</a>{% endcomment %}
+          {% endif %}
+          {% comment %}end 画像が存在するとき{% endcomment %}
+          {% comment %}<div class="contentspallet_pub__aspect-ratio-box contentspallet_pub__aspect-ratio-box--portrait contentspallet_pub__shoppable-image__aspect-constraint">{% endcomment %}
+          <div class="contentspallet_pub__aspect-ratio-box contentspallet_pub__aspect-ratio-box--portrait-to-square-from-md-to-portrait-from-lg contentspallet_pub__shoppable-image__aspect-constraint">
+          <ul class="contentspallet_pub__shoppable-image__product-list" aria-label="画像の商品">
+          {% if metaobject_parent.contents_pallet_child_list %}
+            {% comment %}start 子に画像ロケリストが存在するとき{% endcomment %}
+            {% comment %}start 画像ロケが存在するとき{% endcomment %}
+            {% for metaobject_child_location in metaobject_child.contents_pallet_child_location.value %}
+              {% if metaobject_child_location %}
+              {% comment %}start 画像ロケが存在するとき{% endcomment %}
+                {% comment %}start 価格の最大値、最小値を取得{% endcomment %}
+                {% assign min_price = null %}
+                {% assign max_price = null %}
+                {% for variant in metaobject_child_location.location_product.value.variants %}
+                  {% assign price = variant.price | money_without_currency | replace: ',', '' | plus: 0 %}
+                  {% if min_price == null or price < min_price %}
+                    {% assign min_price = price %}
+                  {% endif %}
+                  {% if max_price == null or price > max_price %}
+                    {% assign max_price = price %}
+                  {% endif %}
+                {% endfor %}
+                {% comment %}end 価格の最大値、最小値を取得{% endcomment %}
+                <li class="contentspallet_pub__shoppable-image__area" aria-hidden="false" style="top: {{ metaobject_child_location.location_top_rate }}%; left: {{ metaobject_child_location.location_left_rate }}%;">
+                    <a class="contentspallet_pub__shoppable-image__dot" aria-labelledby="contentspallet_pub__shoppable-image-art,50585872" href="{{ metaobject_child_location.location_product.value.url }}" style="display: inline;"></a>
+                    {% assign display_type = metaobject_child_location.display_type.value %} 
+                    {% if display_type.code == "left" %}
+                      {% assign display_type_code = "left" %} 
+                    {% elsif display_type.code == "right" %}
+                      {% assign display_type_code = "right" %} 
+                    {% else %}
+                      {% assign display_type_code = "right" %} 
+                    {% endif %}
+                    <div aria-hidden="true" role="tooltip" id="contentspallet_pub__shoppable-image-art,50585872" class="contentspallet_pub__shoppable-image__tag contentspallet_pub__shoppable-image__tag--{{ display_type_code }}">  
+                      <div class="contentspallet_pub__shoppable-image__tag-inner">
+                        <div>
+                          <div class="contentspallet-pip-shoppable-price-package" data-product-name="{{ metaobject_child_location.location_product.value.title }}">
+                            <a href="{{ metaobject_child_location.location_product.value.url }}" class="contentspallet-pip-shoppable-price-package__link" tabindex="-1">
+                              <div class="contentspallet-pip-price-module contentspallet-pip-price-module--xsmall contentspallet-pip-price-module--with-commercial-message contentspallet-pip-price-module--new">
+                                <div class="contentspallet-pip-price-module__information">
+                                  <div class="contentspallet-pip-commercial-message contentspallet-pip-commercial-message--subtle contentspallet-pip-commercial-message--subtle--new">
+                                    <span class="contentspallet-pip-commercial-message__title">{{ metaobject_child_location.location_status }}</span>
+                                  </div>
+                                  <div class="contentspallet-pip-price-module__name notranslate">
+                                    <span class="contentspallet-pip-price-module__name-decorator">
+                                      <h3 class="contentspallet-pip-header-section">
+                                        <div class="contentspallet-pip-header-section__container">
+                                          <div class="contentspallet-pip-header-section__container-text">
+                                            <span class="contentspallet-pip-header-section__title--small notranslate" translate="no">{{ metaobject_child_location.location_product.value.title }}</span>
+                                            <br>
+                                            <span class="contentspallet-pip-header-section__description">
+                                              <span class="contentspallet-pip-header-section__description-text">{{  metaobject_child_location.location_comment }}</span>
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </h3>
+                                    </span>
+                                  </div>
+                                </div>
+                                {% comment %}
+                                <div class="contentspallet-pip-price-module__price">
+                                  <div class="contentspallet-pip-price-module__primary-currency-price">
+                                    <span class="contentspallet-pip-price contentspallet-pip-price--leading contentspallet-pip-price--leading contentspallet-pip-price--medium contentspallet-pip-price--currency-super-aligned contentspallet-pip-price--decimal-super-aligned contentspallet-pip-price-module__current-price">
+                                      <span aria-hidden="true" class="notranslate">
+                                        {% if min_price == max_price %}
+                                          <span class="contentspallet-pip-price__nowrap"><span class="contentspallet-pip-price__currency"></span><span class="contentspallet-pip-price__integer">{{ metaobject_child_location.location_product.value.price | money }}</span></span>
+                                        {% else %}
+                                          <span class="contentspallet-pip-price__nowrap"><span class="contentspallet-pip-price__currency"></span><span class="contentspallet-pip-price__integer">{{ min_price | times: 100 | money }}<br>～{{ max_price | times: 100 | money }}</span></span>
+                                        {% endif %}
+                                      </span>
+                                      {% if min_price == max_price %}
+                                        <span class="contentspallet-pip-price__sr-text">価格 {{ metaobject_child_location.location_product.value.price | money }}</span>
+                                      {% else %}
+                                        <span class="contentspallet-pip-price__sr-text">価格 {{ min_price | money }}～{{ max_price | money }}</span>
+                                      {% endif %}
+                                    </span>
+                                  </div>
+                                </div>
+                                {% endcomment %}
+                              </div>
+                              <div class="contentspallet-pip-shoppable-price-package__chevron">
+                                <svg viewBox="0 0 24 24" focusable="false" width="24" height="24" aria-hidden="true" class="contentspallet-pip-svg-icon">
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="m16.415 12.0011-8.0012 8.0007-1.4141-1.4143 6.587-6.5866-6.586-6.5868L8.415 4l8 8.0011z"></path>
+                                </svg>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                {% comment %}end 画像ロケが存在するとき{% endcomment %}
+              {% endif %}
+            {% endfor %}
+            {% comment %}end 子に画像ロケリストが存在するとき{% endcomment %}
+          {% endif %}
+          </ul>
+          </div>
+          </div>
+          </div>
+          {% comment %}end 画像子のとき{% endcomment %}
+          {% comment %}end 子が存在するとき{% endcomment %}
+        {% endif %}
+      {% endfor %}
+      {% comment %}end 親に子リストが存在するとき{% endcomment %}
+    {% endif %}
+    </div>
+    </div>
+    </div>
+    {% comment %}end 親が存在するとき{% endcomment %}
+  {% else %}
+    <p>No contentspallet01 value found.</p>
+  {% endif %}
+{% endif %}
+
+<script src="{{ 'contentspallet01.js' | asset_url }}" defer="defer"></script>
+
+
+
+{% schema %}
+{
+  "name": "コンテンツパレット０１",
+  "settings": [
+    {
+      "type": "text",
+      "id": "handle",
+      "label": "使用するエントリーのハンドルID"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "タイトル",
+      "default": "〇○○〇○○〇○○〇○○〇○○",
+      "info": "HTMLタグ使用可"
+    },
+    {
+      "type": "text",
+      "id": "url",
+      "label": "URL",
+      "default": "https://wooden-toy.net/",
+      "info": "クリック先のリンクを入力"
+    },
+    {
+      "type": "color",
+      "id": "color-bk",
+      "label": "タイトル背景カラー",
+      "default": "#6CB6D9"
+    },
+    {
+      "type": "color",
+      "id": "font-color",
+      "label": "タイトル文字のカラー",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "number",
+      "id": "font-size",
+      "label": "タイトル文字のサイズ",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "コンテンツパレット０１",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
