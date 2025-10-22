@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 # shopify-contents-pallet
-ShopifyでIKEA風コンテンツパレットを再現する教育用テーマセクション（Liquid + CSS + JS）
+ShopifyでIKEA風コンテンツパレットを再現するテーマセクション（Liquid + CSS + JS）
 =======
 # Shopify Contents Pallet
 
