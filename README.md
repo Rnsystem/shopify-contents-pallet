@@ -42,8 +42,10 @@ PCの完成プレビューサンプルです。
 | スマホビュー |
 |-----------|
 スマホの完成プレビューサンプルです。
-| ![スマホ Preview01](images/sample_sm01.jpg) |
-| ![スマホ Preview02](images/sample_sm02.jpg) |
+| Preview01 | Preview02 |
+|------------|------------|
+| ![スマホ Preview01](images/sample_sm01.jpg) | ![スマホ Preview02](images/sample_sm02.jpg) 
+画像内のドットをタップしたら詳細ラベルがポップアップします。
 | ![スマホ Preview03](images/sample_sm03.jpg) |
 
 ---
