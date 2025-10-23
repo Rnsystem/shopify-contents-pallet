@@ -44,7 +44,7 @@ PCの完成プレビューサンプルです。
 スマホの完成プレビューサンプルです。
 | ![スマホ Preview01](images/sample_sm01.jpg) |
 | ![スマホ Preview02](images/sample_sm02.jpg) |
-| ![スマホ Preview03](images/sample_pc03.jpg) |
+| ![スマホ Preview03](images/sample_sm03.jpg) |
 
 ---
 
